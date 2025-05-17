@@ -79,16 +79,17 @@
 // #define TFT_VFLIP   // define for upside down
 
 // #define TFT_MAC  0x20  // some CYD need this to rotate properly and have correct colors
+#define TFT_INV_OFF // If you have a white background rather than black on your CYD, set this
 
 // x and y offset of 224x288 pixels inside the 240x320 screen
 #define TFT_X_OFFSET 8
 #define TFT_Y_OFFSET 16
 
-#define LED_PIN 16        // pin used for optional WS2812 stripe
+#define LED_PIN 1        // pin used for optional WS2812 stripe
 #define LED_BRIGHTNESS 50 // range 0..255
 
 // audio config (leave both commented out for GPIO 25 for Audio)
-// #define SND_DIFF   // set to output differential audio on GPIO25 _and_ inverted on GPIO26
+#define SND_DIFF   // set to output differential audio on GPIO25 _and_ inverted on GPIO26
 #define SND_LEFT_CHANNEL // Use GPIO 26 for audio
 
 #define NUNCHUCK_INPUT
