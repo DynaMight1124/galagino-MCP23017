@@ -75,7 +75,7 @@
 #define TFT_DC 2
 #define TFT_RST -1
 #define TFT_BL 21   // don't set if backlight is hard wired
-#define TFT_ILI9341 // define for ili9341, otherwise st7789
+// #define TFT_ILI9341 // define for ili9341, otherwise st7789
 // #define TFT_VFLIP   // define for upside down
 
 // #define TFT_MAC  0x20  // some CYD need this to rotate properly and have correct colors
