@@ -29,7 +29,7 @@
 
 #include "dip_switches.h"
 
-// #define CHEAP_YELLOW_DISPLAY_CONF
+#define CHEAP_YELLOW_DISPLAY_CONF
 
 #ifndef CHEAP_YELLOW_DISPLAY_CONF // Config as it was before
 
