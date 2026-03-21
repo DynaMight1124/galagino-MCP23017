@@ -821,6 +821,7 @@ void setup() {
   pinMode(BTN_FIRE_PIN, INPUT_PULLUP);
 #endif
 
+
   // initialize audio to default bitrate (24khz unless dkong is
   // the only game installed, then audio will directly be 
   // initialized to dkongs 11765hz)
@@ -854,13 +855,13 @@ unsigned char buttons_get(void) {
 #endif;
 
 #ifndef BTN_COIN_PIN
-#ifdef BTN_COIN_PIN
-  input_states |= (!digitalRead(BTN_COIN_PIN)) ? BUTTON_EXTRA : 0;
-#else
   input_states |= (!digitalRead(BTN_START_PIN)) ? BUTTON_EXTRA : 0;
-#endif
   static unsigned long virtual_coin_timer = 0;
-  static int virtual_coin_state = 0;
+  static int virtual_coin_state = -1;
+  if (virtual_coin_state == -1) {
+    if (input_states & BUTTON_EXTRA) virtual_coin_state = 4; // button is already down at boot, wait for release
+    else                             virtual_coin_state = 0; // button is up at boot, start normally
+  }
   switch(virtual_coin_state)  {
     case 0:  // idle state
       if(input_states & BUTTON_EXTRA) {
@@ -935,7 +936,7 @@ unsigned char buttons_get(void) {
       (digitalRead(BTN_COIN_PIN) ? 0 : BUTTON_COIN);
 #else
       ((virtual_coin_state != 1) ? 0 : BUTTON_COIN) |
-      (((virtual_coin_state != 3) && (virtual_coin_state != 4)) ? 0 : BUTTON_START); 
+      ((virtual_coin_state != 3) ? 0 : BUTTON_START); 
 #endif
 
 #ifdef NUNCHUCK_INPUT
@@ -943,6 +944,7 @@ unsigned char buttons_get(void) {
       input_states;
 #else
       return startAndCoinState |
+      input_states |
       (digitalRead(BTN_LEFT_PIN) ? 0 : BUTTON_LEFT) |
       (digitalRead(BTN_RIGHT_PIN) ? 0 : BUTTON_RIGHT) |
       (digitalRead(BTN_UP_PIN) ? 0 : BUTTON_UP) |

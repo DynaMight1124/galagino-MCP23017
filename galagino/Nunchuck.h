@@ -1,6 +1,5 @@
 /*
  * Needs MCP23017 Library installed, either via Library Manager or https://github.com/adafruit/Adafruit-MCP23017-Arduino-Library
- * This was mostly written by AI but does work!
  */
 
 #ifndef _NUNCHUCK_H_
@@ -8,15 +7,7 @@
 
 #include <Wire.h>
 #include <Adafruit_MCP23X17.h>
-
-#define BUTTON_LEFT   (1 << 0)
-#define BUTTON_RIGHT  (1 << 1)
-#define BUTTON_UP     (1 << 2)
-#define BUTTON_DOWN   (1 << 3)
-#define BUTTON_FIRE   (1 << 4)
-#define BUTTON_EXTRA  (1 << 5)
-#define BUTTON_COIN   (1 << 6)
-#define BUTTON_START  (1 << 7)
+#include "emulation.h"
 
 // I2C Pin Definitions
 #define NUNCHUCK_SDA 22
