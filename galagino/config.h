@@ -92,6 +92,7 @@
 // audio config (leave both commented out for GPIO 25 for Audio)
 // #define SND_DIFF   // set to output differential audio on GPIO25 _and_ inverted on GPIO26
 #define SND_LEFT_CHANNEL // Use GPIO 26 for audio
+#define MASTER_VOLUME  64   // master volume scaler, default 64 (max), range 1-64
 
 #define NUNCHUCK_INPUT
 
